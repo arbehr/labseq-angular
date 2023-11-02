@@ -10,7 +10,7 @@ import { LabseqService } from './labseq.service';
 export class AppComponent {
   title = 'Labseq';
   number = 0;
-  result = 0;
+  result = 0n;
   error = "";
 
   constructor(private labseqService: LabseqService) {
