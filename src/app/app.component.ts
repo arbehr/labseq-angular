@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LabseqService } from './labseq.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'labseq';
+  title = 'Labseq';
+  number = 0;
+  result = 0;
+  error = "";
+
+  constructor(private labseqService: LabseqService) {
+  }
+
+  updateResult() {
+    this.labseqService.getSequenceResult(this.number).subscribe((result)=> {
+      this.error = "";
+      this.result = result;
+    }, (error) => {
+      this.error = error.error;
+    });
+  }
 }
+
+
